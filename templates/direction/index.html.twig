@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Direction{% endblock %}
+
+{% block body %}
+    <h1>Direction </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NomDirection</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for direction in directions %}
+            <tr>
+                <td>{{ direction.nomDirection }}</td>
+                <td>
+                    <a href="{{ path('direction_show', {'id': direction.id}) }}">Détail</a>
+                    <a href="{{ path('direction_edit', {'id': direction.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2"> Sans Données </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('direction_new') }}"> Nouveau </a>
+{% endblock %}
